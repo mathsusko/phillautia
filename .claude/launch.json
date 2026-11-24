@@ -1,0 +1,15 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "phillautia-dev",
+      "runtimeExecutable": "/usr/local/opt/node@20/bin/node",
+      "runtimeArgs": ["node_modules/next/dist/bin/next", "dev", "--port", "3105"],
+      "port": 3105
+    },
+    {
+      "name": "phillautia-attach",
+      "url": "http://localhost:3105"
+    }
+  ]
+}
