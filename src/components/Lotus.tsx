@@ -1,21 +1,20 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP, MQ } from "@/lib/gsap";
+import { gsap, useGSAP, MQ, refreshScroll, PIN_PRIORITY } from "@/lib/gsap";
 import { petals } from "@/content/site";
+import {
+  LOTUS_ANGLES as ANGLES,
+  LOTUS_LENGTHS as LENGTHS,
+  PETAL_PATH as PETAL,
+  VEIN_PATH as VEIN,
+} from "@/components/art";
 
 /**
  * A lótus fecha à noite e se abre ao amanhecer.
  * Cada pétala é um ciclo do autoconhecimento; elas abrem de fora para dentro
  * e a pétala central (Conexão) fecha a jornada.
  */
-
-// ângulo final de cada ciclo (ordem dos ciclos = ordem de abertura)
-const ANGLES = [-78, 78, -52, 52, -26, 26, 0];
-const LENGTHS = [0.78, 0.78, 0.9, 0.9, 0.98, 0.98, 1.05];
-
-const PETAL = "M0 0 C 46 -38 52 -150 0 -230 C -52 -150 -46 -38 0 0 Z";
-const VEIN = "M0 -8 C 6 -80 6 -150 0 -214";
 
 export default function Lotus() {
   const ref = useRef<HTMLElement>(null);
@@ -43,6 +42,8 @@ export default function Lotus() {
             end: `+=${petals.length * 70 + 60}%`,
             scrub: 1,
             pin: ".lotus__stage",
+            anticipatePin: 1,
+            refreshPriority: PIN_PRIORITY.lotus,
           },
         });
 
@@ -85,6 +86,7 @@ export default function Lotus() {
         );
       });
 
+      refreshScroll();
       return () => mm.revert();
     },
     { scope: ref },

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP, MQ } from "@/lib/gsap";
+import { gsap, useGSAP, MQ, refreshScroll } from "@/lib/gsap";
 import { artist, links } from "@/content/site";
 
 export default function Booking() {
@@ -17,6 +17,7 @@ export default function Booking() {
           .from(".booking__title .line > span", { yPercent: 110, stagger: 0.12, duration: 1.4, ease: "expo.out" }, 0.1)
           .from(".booking__actions > *", { y: 30, autoAlpha: 0, stagger: 0.1, duration: 1, ease: "expo.out" }, 0.6);
       });
+      refreshScroll();
       return () => mm.revert();
     },
     { scope: ref },

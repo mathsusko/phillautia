@@ -40,6 +40,18 @@ export const identity = {
     "Com uma sonoridade marcada pelo Full On Morning, os sets transitam entre atmosferas envolventes e melódicas e momentos de pura explosão energética, criando uma jornada para quem se permite viver o momento.",
 };
 
+/**
+ * Abertura "O Despertar" (ver briefs/decupagem-abertura.md).
+ * `frames` fica null até o vídeo existir: o hero roda a prévia procedural.
+ * Depois de fatiar o vídeo em public/frames/ (script fatiar_frames.sh da skill),
+ * preencha com o total impresso pelo script, por exemplo:
+ *   { total: 200, desktop: "/frames/desktop/f_{n}.webp", mobile: "/frames/mobile/f_{n}.webp" }
+ */
+export const opening = {
+  frames: null as null | { total: number; desktop: string; mobile: string },
+  tagline: { a: "Amor por si,", b: "energia em movimento." },
+};
+
 export const symbol = {
   title: "Duas colunas, um movimento",
   text: "O emblema nasce da distorção de duas colunas greco-romanas: a estrutura clássica que sustenta, colocada em giro. Firmeza e fluxo no mesmo gesto.",

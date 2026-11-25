@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { gsap, useGSAP, MQ } from "@/lib/gsap";
+import { gsap, useGSAP, MQ, refreshScroll } from "@/lib/gsap";
 import { artist, identity, links } from "@/content/site";
 
 // curva de energia de um set: envolvente -> melódico -> explosão
@@ -38,6 +38,7 @@ export default function Sound() {
           scrollTrigger: { trigger: ".sound__media", start: "top 80%" },
         });
       });
+      refreshScroll();
       return () => mm.revert();
     },
     { scope: ref },

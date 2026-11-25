@@ -1,11 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import { gsap, useGSAP, ScrollTrigger } from "@/lib/gsap";
+import { gsap, useGSAP, ScrollTrigger, refreshScroll } from "@/lib/gsap";
 
 const nav = [
   { href: "#manifesto", label: "Manifesto" },
-  { href: "#simbolo", label: "Símbolo" },
   { href: "#lotus", label: "Lótus" },
   { href: "#som", label: "Som" },
   { href: "#galeria", label: "Galeria" },
@@ -24,6 +23,7 @@ export default function Header() {
         onUpdate: (self) => show(self.direction === 1 ? -110 : 0),
         onLeaveBack: () => show(0),
       });
+      refreshScroll();
     },
     { scope: ref },
   );

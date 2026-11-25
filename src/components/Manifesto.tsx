@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { gsap, useGSAP, MQ } from "@/lib/gsap";
-import { artist, identity } from "@/content/site";
+import { gsap, useGSAP, MQ, refreshScroll } from "@/lib/gsap";
+import { artist, identity, symbol } from "@/content/site";
 
 function Words({ text }: { text: string }) {
   return (
@@ -64,6 +64,7 @@ export default function Manifesto() {
           scrollTrigger: { trigger: ".manifesto__bio", start: "top 70%" },
         });
       });
+      refreshScroll();
       return () => mm.revert();
     },
     { scope: ref },
@@ -97,6 +98,11 @@ export default function Manifesto() {
         <div className="manifesto__text">
           <p className="lead">{identity.bio}</p>
           <p>{identity.concept}</p>
+          <p className="manifesto__symbol">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/emblem-dourado.svg" alt="" width={36} height={36} />
+            <span>{symbol.text}</span>
+          </p>
         </div>
       </div>
     </section>

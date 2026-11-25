@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { gsap, useGSAP, MQ } from "@/lib/gsap";
+import { gsap, useGSAP, MQ, refreshScroll, PIN_PRIORITY } from "@/lib/gsap";
 import { gallery } from "@/content/site";
 
 export default function Gallery() {
@@ -26,7 +26,9 @@ export default function Gallery() {
             end: () => `+=${distance()}`,
             scrub: 1,
             pin: true,
+            anticipatePin: 1,
             invalidateOnRefresh: true,
+            refreshPriority: PIN_PRIORITY.gallery,
           },
         });
 
@@ -62,6 +64,7 @@ export default function Gallery() {
         });
       });
 
+      refreshScroll();
       return () => mm.revert();
     },
     { scope: ref },

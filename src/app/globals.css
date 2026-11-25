@@ -278,68 +278,148 @@ em,
   padding: clamp(96px, 16vh, 200px) var(--gutter);
 }
 
-/* HERO */
-.hero {
+/* ABERTURA · O Despertar */
+.opening {
   position: relative;
-  min-height: 100svh;
-  display: grid;
-  align-items: center;
-  gap: 48px;
-  padding: 120px var(--gutter) 80px;
 }
-.hero__title {
+.opening__stage {
   position: relative;
-  z-index: 2;
-}
-.hero__emblem {
-  width: clamp(64px, 8vw, 112px);
-  height: auto;
-  margin-bottom: clamp(20px, 4vh, 40px);
-  filter: drop-shadow(0 0 40px rgb(247 215 116 / 0.35));
-}
-.hero__mask {
+  height: 100svh;
   overflow: hidden;
-  padding-block: 0.08em;
+  isolation: isolate;
 }
-.hero__word {
-  width: min(100%, 940px);
-  height: auto;
+.opening__frames,
+.opening__preview,
+.opening__veil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
-.hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px 48px;
-  margin-top: clamp(24px, 5vh, 48px);
-  max-width: 940px;
+.opening__frames {
+  z-index: -2;
 }
-.hero__meta .eyebrow {
-  margin: 0;
+.opening__preview {
+  z-index: -2;
 }
-.hero__claim {
-  font-family: var(--font-display), serif;
-  font-size: clamp(1.4rem, 1rem + 1.6vw, 2.4rem);
-  line-height: 1.1;
+/* véu para leitura do texto sobre o filme */
+.opening__veil {
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 45% at 50% 32%, rgb(10 5 28 / 0.45), transparent 70%),
+    linear-gradient(180deg, rgb(10 5 28 / 0.55), transparent 28%);
 }
-.hero__arch {
-  position: relative;
-  width: min(78vw, 420px);
-  aspect-ratio: 3 / 4.3;
-  justify-self: center;
-  border-radius: 999px 999px 18px 18px;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px var(--cream-3),
-    0 40px 120px -30px rgb(214 36 159 / 0.55);
+
+/* prévia procedural */
+.op-col {
+  position: absolute;
+  bottom: -2svh;
+  height: 96svh;
+  width: auto;
+  aspect-ratio: 120 / 400;
+  stroke: var(--cream);
+  stroke-width: 1.1;
+  stroke-opacity: 0.85;
+  filter: drop-shadow(0 0 28px rgb(247 215 116 / 0.18));
 }
-.hero__arch img {
-  object-fit: cover;
+.op-col .flute {
+  stroke-opacity: 0.4;
 }
-.hero__scroll {
+.op-col--l {
+  left: clamp(8px, 3vw, 64px);
+}
+.op-col--r {
+  right: clamp(8px, 3vw, 64px);
+}
+.opening__sun {
   position: absolute;
   left: 50%;
-  bottom: 28px;
+  bottom: -18svh;
+  width: min(120vw, 1300px);
+  aspect-ratio: 1;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgb(255 226 160 / 0.75) 0%,
+    rgb(255 178 97 / 0.45) 16%,
+    rgb(214 36 159 / 0.22) 38%,
+    transparent 64%
+  );
+  pointer-events: none;
+}
+.opening__lotus {
+  position: absolute;
+  left: 50%;
+  bottom: 9svh;
+  width: min(58vw, 620px);
+  translate: -50% 0;
+  overflow: visible;
+}
+.opening__water {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 9.5svh;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cream-3) 20%, var(--gold-soft) 50%, var(--cream-3) 80%, transparent);
+  box-shadow: 0 0 28px 2px rgb(247 215 116 / 0.35);
+}
+
+/* overlays */
+.opening__copy {
+  position: absolute;
+  left: 50%;
+  top: 18svh;
+  translate: -50% 0;
+  width: min(86vw, 920px);
+  display: grid;
+  justify-items: center;
+  gap: clamp(16px, 3vh, 28px);
+  text-align: center;
+}
+.opening__mask {
+  overflow: hidden;
+  padding-block: 0.06em;
+}
+.opening__word {
+  width: min(78vw, 860px);
+  height: auto;
+}
+.opening__tag {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+.opening__tag .eyebrow {
+  margin: 0;
+}
+.opening__tag .eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+.opening__claim {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.3rem, 0.9rem + 1.6vw, 2.3rem);
+  line-height: 1.15;
+}
+.opening__emblem {
+  position: absolute;
+  left: 50%;
+  top: 16svh;
+  width: min(44vw, 300px);
+  height: auto;
+  translate: -50% 0;
+  opacity: 0;
+  filter: drop-shadow(0 0 70px rgb(247 215 116 / 0.55));
+}
+.opening__hint {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
   translate: -50% 0;
   display: grid;
   justify-items: center;
@@ -347,9 +427,10 @@ em,
   font-size: 0.7rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--cream-2);
 }
-.hero__scroll i {
+.opening__hint i {
   width: 1px;
   height: 48px;
   background: linear-gradient(var(--gold-soft), transparent);
@@ -362,12 +443,22 @@ em,
   51% { transform-origin: bottom; }
   100% { transform: scaleY(0); transform-origin: bottom; }
 }
-@media (min-width: 900px) {
-  .hero {
-    grid-template-columns: 1.35fr 1fr;
+@media (max-width: 767px) {
+  .op-col {
+    height: 46svh;
+    bottom: 6svh;
   }
-  .hero__arch {
-    width: min(32vw, 460px);
+  .op-col--l {
+    left: 4px;
+  }
+  .op-col--r {
+    right: 4px;
+  }
+  .opening__lotus {
+    width: 92vw;
+  }
+  .opening__copy {
+    top: 20svh;
   }
 }
 
@@ -428,6 +519,14 @@ em,
   color: var(--cream-2);
   max-width: 36em;
 }
+.manifesto__symbol {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding-top: 24px;
+  border-top: 1px solid var(--cream-3);
+}
 .manifesto__text .lead {
   color: var(--cream);
 }
@@ -435,56 +534,6 @@ em,
   .manifesto__bio {
     grid-template-columns: 0.8fr 1fr;
     gap: clamp(48px, 8vw, 140px);
-  }
-}
-
-/* SÍMBOLO */
-.symbol__stage {
-  position: relative;
-  min-height: 100svh;
-  display: grid;
-  align-content: center;
-  gap: 32px;
-  padding: 120px var(--gutter) 64px;
-}
-.symbol__art {
-  position: relative;
-  display: grid;
-  place-items: center;
-  height: min(56svh, 520px);
-}
-.symbol__art > * {
-  grid-area: 1 / 1;
-}
-.symbol__cols {
-  height: 100%;
-  width: auto;
-  fill: none;
-  stroke: var(--cream);
-  stroke-width: 1.4;
-  overflow: visible;
-}
-.symbol__cols .flute {
-  stroke-opacity: 0.45;
-}
-.symbol__emblem {
-  width: min(62vw, 320px);
-  height: auto;
-  filter: drop-shadow(0 0 60px rgb(247 215 116 / 0.45));
-}
-.symbol__halo {
-  width: min(90vw, 560px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgb(247 215 116 / 0.28), rgb(214 36 159 / 0.12) 45%, transparent 70%);
-}
-@media (min-width: 900px) {
-  .symbol__stage {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-  .symbol__art {
-    height: min(72svh, 620px);
   }
 }
 
@@ -937,10 +986,7 @@ em,
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html:not(.force-motion) .symbol__cols {
-    display: none;
-  }
-  .hero__scroll i {
+  .opening__hint i {
     animation: none;
   }
 }
