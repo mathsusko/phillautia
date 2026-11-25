@@ -3,6 +3,7 @@ import DawnSky from "@/components/DawnSky";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
+import SymbolSection from "@/components/Symbol";
 import Lotus from "@/components/Lotus";
 import Sound from "@/components/Sound";
 import Gallery from "@/components/Gallery";
@@ -22,6 +23,7 @@ export default function Home() {
       <main>
         <Hero />
         <Manifesto />
+        <SymbolSection />
         <Lotus />
         <Sound />
         <Gallery />

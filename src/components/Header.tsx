@@ -5,6 +5,7 @@ import { gsap, useGSAP, ScrollTrigger, refreshScroll } from "@/lib/gsap";
 
 const nav = [
   { href: "#manifesto", label: "Manifesto" },
+  { href: "#simbolo", label: "Símbolo" },
   { href: "#lotus", label: "Lótus" },
   { href: "#som", label: "Som" },
   { href: "#galeria", label: "Galeria" },

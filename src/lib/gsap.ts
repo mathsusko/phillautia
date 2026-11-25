@@ -35,7 +35,7 @@ export const prefersReducedMotion = () =>
  * adiciona empurra tudo o que vem depois. Gatilhos comuns ficam em 0 e
  * são calculados depois de todos os pins.
  */
-export const PIN_PRIORITY = { opening: 40, lotus: 20, gallery: 10 } as const;
+export const PIN_PRIORITY = { symbol: 30, lotus: 20, gallery: 10 } as const;
 
 ScrollTrigger.config({ ignoreMobileResize: true });
 
